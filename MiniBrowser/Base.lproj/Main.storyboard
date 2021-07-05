@@ -45,7 +45,7 @@
                                     <barButtonItem systemItem="refresh" id="x09-dV-f3f"/>
                                 </items>
                             </toolbar>
-                            <wkWebView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kXF-el-4YB">
+                            <wkWebView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="v2M-pY-3pY">
                                 <rect key="frame" x="0.0" y="119" width="414" height="699"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -58,6 +58,11 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <connections>
+                        <outlet property="bookmarkSegmentedControl" destination="vA9-VT-KnI" id="DfG-dA-h2z"/>
+                        <outlet property="mainWebView" destination="v2M-pY-3pY" id="OWm-tc-Pvt"/>
+                        <outlet property="urlTextField" destination="AFo-mS-gyd" id="qcB-2Z-WTg"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
