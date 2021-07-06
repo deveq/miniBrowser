@@ -25,42 +25,69 @@
                                     <segment title="apple"/>
                                     <segment title="Google"/>
                                 </segments>
+                                <connections>
+                                    <action selector="bookmarkAction:" destination="BYZ-38-t0r" eventType="valueChanged" id="OhL-hL-ozb"/>
+                                </connections>
                             </segmentedControl>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="AFo-mS-gyd">
                                 <rect key="frame" x="0.0" y="77" width="414" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" keyboardType="URL"/>
+                                <textInputTraits key="textInputTraits" keyboardType="URL" returnKeyType="go"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="WPR-7m-1OD"/>
+                                </connections>
                             </textField>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0cP-ck-lz6">
-                                <rect key="frame" x="0.0" y="818" width="414" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                <items>
-                                    <barButtonItem title="forward" systemItem="rewind" id="w23-zW-8no"/>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="FsX-hd-VdQ"/>
-                                    <barButtonItem title="backward" systemItem="fastForward" id="bEQ-zM-XoS"/>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="yhX-SJ-Uli"/>
-                                    <barButtonItem systemItem="stop" id="ZAl-7M-ZUj"/>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="cnG-hw-ooM"/>
-                                    <barButtonItem systemItem="refresh" id="x09-dV-f3f"/>
-                                </items>
-                            </toolbar>
-                            <wkWebView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="v2M-pY-3pY">
-                                <rect key="frame" x="0.0" y="119" width="414" height="699"/>
+                            <webView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gEE-zx-uq8">
+                                <rect key="frame" x="13" y="119" width="390" height="642"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <wkWebViewConfiguration key="configuration">
-                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
-                                    <wkPreferences key="preferences"/>
-                                </wkWebViewConfiguration>
-                            </wkWebView>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="LGR-cc-lT8"/>
+                                </connections>
+                            </webView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="DmU-W0-EQE">
+                                <rect key="frame" x="167" y="300" width="81" height="57"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="color" systemColor="linkColor"/>
+                            </activityIndicatorView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0cP-ck-lz6">
+                                <rect key="frame" x="1" y="789" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <items>
+                                    <barButtonItem title="forward" systemItem="rewind" id="w23-zW-8no">
+                                        <connections>
+                                            <action selector="goBack" destination="gEE-zx-uq8" id="lRT-kK-goF"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="FsX-hd-VdQ"/>
+                                    <barButtonItem title="backward" systemItem="fastForward" id="bEQ-zM-XoS">
+                                        <connections>
+                                            <action selector="goForward" destination="gEE-zx-uq8" id="vU3-t4-xlv"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="yhX-SJ-Uli"/>
+                                    <barButtonItem systemItem="stop" id="ZAl-7M-ZUj">
+                                        <connections>
+                                            <action selector="stopLoading" destination="gEE-zx-uq8" id="9Tl-0S-k7G"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="cnG-hw-ooM"/>
+                                    <barButtonItem systemItem="refresh" id="x09-dV-f3f">
+                                        <connections>
+                                            <action selector="reload" destination="gEE-zx-uq8" id="tj9-bV-BLL"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <connections>
+                        <outlet property="activityIndicatorView" destination="DmU-W0-EQE" id="tbT-dg-S75"/>
                         <outlet property="bookmarkSegmentedControl" destination="vA9-VT-KnI" id="DfG-dA-h2z"/>
-                        <outlet property="mainWebView" destination="v2M-pY-3pY" id="OWm-tc-Pvt"/>
+                        <outlet property="mainWebView" destination="gEE-zx-uq8" id="Mom-Td-cjK"/>
                         <outlet property="urlTextField" destination="AFo-mS-gyd" id="qcB-2Z-WTg"/>
                     </connections>
                 </viewController>
@@ -70,6 +97,9 @@
         </scene>
     </scenes>
     <resources>
+        <systemColor name="linkColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
